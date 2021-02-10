@@ -1,0 +1,56 @@
+{
+  "name": "hexagonal_typescript",
+  "version": "0.1.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "tsc --pretty && node build/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "test": "jest --collect-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rimantoro/hexagonal_typescript.git"
+  },
+  "author": "Rosa Imantoro",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/rimantoro/hexagonal_typescript/issues"
+  },
+  "homepage": "https://github.com/rimantoro/hexagonal_typescript#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "graphql": "^15.4.0",
+    "helmet": "^4.4.1",
+    "mongoose": "^5.9.25",
+    "pg": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.31",
+    "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.5",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.14.25",
+    "@types/uuid": "^8.0.0",
+    "babel-jest": "^26.1.0",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "jest": "^26.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "node-mocks-http": "^1.8.1",
+    "nodemon": "^2.0.7",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7",
+    "uuid-validate": "0.0.3"
+  }
+}

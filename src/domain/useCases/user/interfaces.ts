@@ -8,5 +8,6 @@ export interface IUserUseCases {
 export interface IAuthUserCases {
   generateJWTToken(jwtkey: string, payload: any, opt: {}): string
   validateJWTToken(jwtkey: string, token: string): Promise<any>
-  // extractJWTPayloadByToken(token: string): any
+  
+  generateJWTTokenForUser(username: string, password: string): Promise<string>
 }

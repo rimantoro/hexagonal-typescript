@@ -1,4 +1,5 @@
 import express from 'express';
+
 import pingFactory from '../rest/controllers/ping'
 import { JWTControllers } from '../rest/controllers/auth/jwt'
 

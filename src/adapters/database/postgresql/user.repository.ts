@@ -2,12 +2,13 @@ import { getConnection } from 'typeorm'
 import { IUserRepository } from '../../../ports/output/database/IUserRepository';
 import { UserEntity } from './schemas/user.schema';
 import { User } from '../../../domain/entity/user';
+import { ERRMSG } from '../../../utils/messages';
 
 export default class UserRepository implements IUserRepository {
 
     async createOne(user: User): Promise<boolean> {
         try {
-            await getConnection()
+            getConnection()
                 .createQueryBuilder()
                 .insert()
                 .into(UserEntity)
@@ -32,7 +33,7 @@ export default class UserRepository implements IUserRepository {
                 .where("user.id = :id", { id: ID })
                 .getOne()
         } catch (error) {
-            throw new Error("user not found");
+            throw new Error(ERRMSG.NOTFOUND.user);
         }
     }
 
@@ -45,7 +46,7 @@ export default class UserRepository implements IUserRepository {
                 .where("user.username = :username", { username: username })
                 .getOne()
         } catch (error) {
-            throw new Error("user not found");
+            throw new Error(ERRMSG.NOTFOUND.user);
         }
     }
 }

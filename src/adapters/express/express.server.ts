@@ -5,7 +5,7 @@ import { JWTControllers } from '../rest/controllers/auth/jwt'
 
 export default class ExpressServer { 
 
-    private app: express
+    private app
     constructor() {
         this.app = express()
         this.initAdapter();

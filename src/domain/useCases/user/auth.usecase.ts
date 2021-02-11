@@ -4,16 +4,25 @@ import { IAuthUserCases } from "./interfaces";
 import { IUserRepository } from "../../../ports/output/database/IUserRepository";
 
 
+
 export class UserAuthUsecase implements IAuthUserCases {
+
   constructor(private userRepository: IUserRepository) {
   }
   
-  generateJWTToken(jwtkey: string, payload: any): string{
-    // set for 1 hour
+  // example of opt = {
+  //   issuer:  "",
+  //   subject:  "",
+  //   audience:  "",
+  //   expiresIn:  "1h",
+  //   algorithms:  ["RS256", "RS512"]
+  // }
+  generateJWTToken(jwtkey: string, payload: any, opt: {}): string{
     return jwt.sign({
-      exp: Math.floor(Date.now() / 1000) + (60 * 60),
-      data: payload
-    }, jwtkey)
+        data: payload
+      }
+      , jwtkey
+      , opt)
   }
 
   async validateJWTToken(jwtkey: string, token: string): Promise<any>{

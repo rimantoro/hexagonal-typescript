@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express  from 'express';
 
 import RestError from '../../../../utils/restError'
 import DomainUseCasesSingleton from '../../../../domain/dominUseCases.singleton';
@@ -13,9 +13,9 @@ export class JWTControllers {
     private jwtkey: string
 
     
-    constructor(private app: express) {
+    constructor(private app) {
         this.payload = { fname: "sergey", lname: "imanovski" }
-        this.jwtkey = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        this.jwtkey = process.env.JWT_KEY
         this.control();
     }
 
@@ -30,8 +30,13 @@ export class JWTControllers {
 
     createToken = (req: any, res: any, next: any) => {
         try {
-            const token = this.authUseCases.generateJWTToken(this.jwtkey, this.payload)
-
+            const jwtOpts = {
+                issuer:  process.env.APP_NAME,
+                subject:  "",
+                expiresIn:  "1h",
+                algorithm:  "HS256"
+            }
+            const token = this.authUseCases.generateJWTToken(this.jwtkey, this.payload, jwtOpts)
             res.status(200).json({
                 status: "success",
                 data: {
@@ -61,9 +66,7 @@ export class JWTControllers {
                 this.authUseCases.validateJWTToken(this.jwtkey, token).then((payload) => {
                     res.status(200).json({
                         status: "success",
-                        data: { 
-                            payload: payload 
-                        }
+                        data: payload
                     });
                 })
             } else {

@@ -5,9 +5,8 @@ export interface IUserUseCases {
   validatePassword(username: string, plainPass: string): Promise<boolean>
   createNewUserAndSave(user: User): Promise<boolean>
 }
-
 export interface IAuthUserCases {
-  generateJWTToken(jwtkey: string, payload: any): string
+  generateJWTToken(jwtkey: string, payload: any, opt: {}): string
   validateJWTToken(jwtkey: string, token: string): Promise<any>
   // extractJWTPayloadByToken(token: string): any
 }

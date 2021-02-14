@@ -1,6 +1,6 @@
 import IDatabasePort from '../../../ports/output/database/IDatabasePort';
 import UserRepository from './user.repository'
-import { createConnection, Connection, getConnection } from 'typeorm'
+import { createConnection, getConnection } from 'typeorm'
 import { IUserRepository } from '../../../ports/output/database/IUserRepository';
 
 
@@ -22,19 +22,23 @@ export default class SQLDriver implements IDatabasePort {
     private async connect(dbSettings): Promise<any> {
         console.log(`creating Connection to [ ${dbSettings.dbType}://${dbSettings.dbHost}:${dbSettings.dbPort}/${dbSettings.dbName} ]`);
 
-        const conn = await createConnection({
-          type: dbSettings.dbType,
-          host: dbSettings.dbHost,
-          port: dbSettings.dbPort,
-          username: dbSettings.dbUser,
-          password: dbSettings.dbPass,
-          database: dbSettings.dbName,
+        // const conn = await createConnection({
+        //   type: dbSettings.dbType,
+        //   host: dbSettings.dbHost,
+        //   port: dbSettings.dbPort,
+        //   username: dbSettings.dbUser,
+        //   password: dbSettings.dbPass,
+        //   database: dbSettings.dbName,
 
-          // extra options
-          maxQueryExecutionTime: 1000,
-          logging: process.env.DEBUG ? true : false,
-          logger: 'advanced-console'
-        });
+        //   // extra options
+        //   synchronize: Boolean(process.env.DB_SYNC),
+        //   maxQueryExecutionTime: 1000,
+        //   logging: process.env.DEBUG ? true : false,
+        //   logger: 'advanced-console'
+        // });
+
+        // config based on ormconfig.json
+        const conn = await createConnection();
 
         return conn;
     }

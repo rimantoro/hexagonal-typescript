@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "285e38e6-91ff-479c-8202-1fa93739a4f0",
+		"name": "API with TypeScript",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"iman@email.com\",\n    \"password\": \"asdasdasdasdasd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8070/token",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8070",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImZuYW1lIjoic2VyZ2V5IiwibG5hbWUiOiJpbWFub3Zza2kifSwiaWF0IjoxNjEzMDM1ODI5LCJleHAiOjE2MTMwMzk0MjksImlzcyI6Im15LXN2YyIsInN1YiI6IiJ9.HLqY4wpmKg8yHiI4A1VRxE4PBzm-OrzUS8gcPnlrE-s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8070/token/validate",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8070",
+					"path": [
+						"token",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User API - Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImZuYW1lIjoic2VyZ2V5IiwibG5hbWUiOiJpbWFub3Zza2kifSwiaWF0IjoxNjEzMDM1ODI5LCJleHAiOjE2MTMwMzk0MjksImlzcyI6Im15LXN2YyIsInN1YiI6IiJ9.HLqY4wpmKg8yHiI4A1VRxE4PBzm-OrzUS8gcPnlrE-s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"imanovski\",\n    \"password\": \"abcdef\",\n    \"first_name\": \"R.\",\n    \"last_name\": \"Imantoro\",\n    \"birthdate\": \"1989-06-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8070/user/create",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8070",
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

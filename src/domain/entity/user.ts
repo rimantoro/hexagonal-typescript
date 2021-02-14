@@ -1,4 +1,4 @@
-import { bcrypt } from 'bcrypt' 
+import bcrypt from 'bcrypt' 
 import { BaseColumns } from "./base";
 
 export class User extends BaseColumns {
@@ -7,7 +7,7 @@ export class User extends BaseColumns {
     public password: string
     public fname: string
     public lname: string
-    public birthdate: Date
+    public birthdate: string
     public isVerified: boolean
     public status: number
     public roles: any[]
@@ -42,15 +42,10 @@ export class User extends BaseColumns {
       return removed
     }
 
-    public setHashedPass(password: string): void {
+    public async setHashedPass(password: string): Promise<void> {
       const rounds = 10;
-      return bcrypt.hash(password, rounds, function(err, hash) {
-        if (err instanceof Error) {
-          throw new Error(err.message);
-        } else {
-          this.password = hash
-        }
-      })
+      const hashed = await bcrypt.hash(password, rounds)
+      this.password = hashed
     }
 
     public validatePassword(plainPassword: string): boolean {
@@ -60,12 +55,6 @@ export class User extends BaseColumns {
 }
 
 export class Role{
-  // public id: string
-  // public name: string
-  // public description: string
-  // public status: string
-  // public permissions: any[]
-
   constructor(
       public id: string,
       public name: string, 
@@ -79,7 +68,7 @@ export class Role{
     this.permissions.push(permit)
   }
 
-  public detachPermissions(permitID: string): boolean {
+  public detachPermissions(permitID: number): boolean {
     let i: number = 0;
     let removed: boolean = false;
     while (i < this.permissions.length) {
@@ -94,7 +83,7 @@ export class Role{
 }
 
 export class Permission{
-  public id: string
+  public id: number
   public object: string
   public action: string
   public description: string

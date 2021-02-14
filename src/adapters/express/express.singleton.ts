@@ -1,5 +1,5 @@
 import ExpressServer from './express.server';
-import DomainUseCasesSingleton from '../../domain/dominUseCases.singleton';
+// import DomainUseCasesSingleton from '../../domain/dominUseCases.singleton';
 
 export default class ExpressSingleton { 
     private static instance: ExpressSingleton;

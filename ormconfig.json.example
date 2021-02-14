@@ -1,0 +1,26 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "youruser",
+  "password": "yoourpassword",
+  "database": "yourdb",
+  "schema": "public", 
+  "synchronize": false,
+  "logging": true,
+  "logger": "advanced-logger",
+  "entities": [   
+      "build/adapters/database/postgresql/entities/*.entity.js"
+  ],
+  "migrationsTableName": "migrations",
+  "migrations": [
+     "migrations/*.ts"
+  ],
+  "cli": {
+     "migrationsDir": "migrations",
+     "entitiesDir": "build/adapters/database/postgresql/entities"
+  },
+  "subscribers": [
+     "build/subscriber/**/*.{ts,js}"
+  ]
+}  

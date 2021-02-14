@@ -2,12 +2,13 @@
   "name": "hexagonal_typescript",
   "version": "0.1.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "tsc --pretty && node build/index.js",
-    "dev": "nodemon src/index.ts",
+    "dev": "tsc --pretty && nodemon --exec ts-node build/index.js",
     "build": "tsc",
-    "test": "jest --collect-coverage"
+    "test": "jest --collect-coverage",
+    "cli": "ts-node ./node_modules/.bin/typeorm"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "express-validator": "^6.9.2",
     "graphql": "^15.4.0",
     "helmet": "^4.4.1",
+    "luxon": "^1.26.0",
     "mongoose": "^5.9.25",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
@@ -41,6 +43,7 @@
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.5",
     "@types/jsonwebtoken": "^8.5.0",
+    "@types/luxon": "^1.25.3",
     "@types/node": "^14.14.25",
     "@types/uuid": "^8.0.0",
     "babel-jest": "^26.1.0",
